@@ -1,0 +1,23 @@
+ex1  ==  Hello World.
+
+This is the first program students to programming usually do.
+Hello World.  This is simply a way to orient yourself with the IDE
+and vscode.
+
+To build the code, press <ctrl> <shift> and <b> all at the same time.
+If you get compiler errors, read the error and try to correct it.
+If you can't correct it, take a look at google and see what that says
+about your error.
+
+// Things to try...
+
+1. Play around with the text.  Change it around.
+
+2. Add another line of text.
+
+3. See if you can print both on a single line (using two seperate cout).
+Hint: Google 'std::endl'.  What does it mean?
+
+4. Try to print the text combined with a variable.
+
+5. Try printing a floating point number.
