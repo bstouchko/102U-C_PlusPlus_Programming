@@ -1,0 +1,37 @@
+ex6  == Blackjack App
+
+This simulates a game of blackjack.  You will notice that it is not complete.
+That is your job.  right now we have defined all the classes we need.  We have
+created a driver app.  Find the requirements below.  Determine what is already done,
+what needs to be modified, what needs to be created, what needs to be changed from
+existing.
+
+Requirements:
+
+1. A deck of cards consists of Ace through King for each of 4 suits: Spades; Clubs;
+Hearts; and Diamonds.
+
+2. Just like in real life, there should be only one copy of a card in each deck.
+
+3. The dealer first deals two cards to the player, and then two cards to itself.
+The player is shown both of their cards, but the dealer only shows the player the first
+one of theirs.  The dealer however is aware of both.
+
+4. The player has the option to hold, or draw another card from the dealer.  This
+continues until the player stops or he hits 21.
+
+5. Once the player is done, the dealer keeps picking cards until he has a minimum of
+17.  If he goes over 21, he loses.
+
+6. After everything is done, the closest to 21 wins.
+
+7. A tie results in a 'push' where neither player wins.
+
+8. An Ace is worth either 1 or 11 points, at the discrection of the player.  If the dealer gets an ace,
+it is either 1 or 11 depending on what is most relevent at the time.  The dealer will keep drawing cards
+until he is over 16 or busts.  The ace will be 1 if it results in a bust, or 11 if not.
+
+9.  After each game, the app should prompt the user if they should play again.  A q or Q should result
+in the end of the game.
+
+10. Each game should print the results and allow the user to continue or stop.

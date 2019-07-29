@@ -1,0 +1,166 @@
+ex5  ==  The Student App.  Objects!
+
+The Student App is an example of a semi complex program.  Until now, we have had one file
+which we added our code into, compiled and ran.  This is good for very trivial applications,
+however, the reality is almost all applications in C++ will consist of multiple files.
+
+Until now, we have just taken the build process for granted.  When compiling a single file the
+process sounds overcomplicated.  When we use multiple files, we need to understand the process so
+we know how all our files magically get assembled into a single executable.  The process is the same
+in both cases, but is easier to visualize for multiple files.
+
+When we do the build (ctrl-shift-b) vscode calls a program called a compiler (cl.exe).  In vscode, the
+configuration which tells it what to do is hidden from the user but customizable using the
+tasks.json file.  For our work, we don't need to do anything special, so we will just
+let vscode go with its default settings for us.
+
+So what the build does, is it tells the compilation system about all our cpp files.  In our tasks.json
+file, it does this by telling the compiler to look for any .cpp file under the /src directory.  If we
+have code with .c extensions or in different locations, we will need to modify the tasks.json to tell
+the compiler about it.
+
+For each .cpp file, the compiler looks at it and turns our plain english commands into complex machine
+code.  This machine code is different for each microprocessor, so code you compile for the intel or amd
+microprocessor in your laptop, wouldn't work for your mac computer.  You would have to compile it special
+for the mac or linux or roborio.  When we do this (compiling on a windows machine for another platform) its
+called 'cross-compiling'.  It creates 'object' files (nothing to do with object oriented programming, just
+a coincidence) and stores them as .o files in the /obj directory.  Again, we tell it to do this by changing
+the tasks.json file.  Once it is done compiling, it then automatically calls another program called a 'linker'.
+The linker takes all the .o files and stiches them together to create a single exe file.
+
+So enough about our build infrastructure.  Let's talk about the objects.
+
+So the idea of Object Oriented languages such as: C++; Java; and Python, is that all common information related
+to a single thing is stored in a data type called an object.  In C++ we call objects 'classes'.  You may hear the
+terminology used interchangably.  While not a rule, you will typically see objects expressed in 2 files.  The
+first is called a header file and has a .h or .hpp extension.  Both work.  The job of the header file is to
+define the object.  The header file can also contain trivial implementation code.  The second file is the
+.cpp file or implementation file.  This file contains all of the code that allows the class to do all its
+magic.  The reason behind this split of files is so that others can just simply include your header file and
+get an idea of how to use your class without being bothered with all the stuff that goes into the implementation
+of how it does what it does.  If they include your header, then they can use your class in their program.
+
+Our example code is the common teaching example of a Student
+registration system.  It is very basic.  If we think about what
+objects we need to accomplish this, at a minimum, we can
+envision: students; courses; and a school.
+
+Let's look at some code:
+First click the middle icon in the upper right corner.
+This should be the screen split.  You can read the readme
+and follow along with the code this way.
+
+Open up the file Course.h.
+This is our first header file.  You will notice on top it has
+a bunch of stuff in comments.  We've seen this before with
+our other examples.  This is simply to give some information
+about the file.  You will typically see this in some format.
+
+The next file after the 'header block' is curious.  What these
+two lines say, is that if COURSE_H is not already defined,
+then define it now along with everything underneath it until it
+hits the #endif line (at the end).  The code may work without this
+but if too many files try to include this one, we will get a
+compiliation error that things are defined more than once.  The
+#ifndef lines will prevent this from happening.  We will put
+it on the top of ALL our .h files.
+
+The next line is a library include which we are now used to.
+We only want to include things that this class needs.  We have
+some string datatypes here, so we should include it.
+
+The next line (21) is the start of our Class definition.
+This says, we want to define a class object called 'Course'.
+We provide an open bracket which says, everything between this
+and the closing bracket ( line 35 ) belongs to 'Course'.
+
+Classes contain two different kinds of things.  They contain
+functions and attributes.  Functions are exactly as the name
+would imply, a function that carries out a task that our object
+would typically do.  Attributes are variables that our object
+is going to need to know about for the life of the object.
+
+The first inner keyword we find is 'public' (ln 23). If you
+create a 'Course' object in your code (and you can create many)
+You will be able to use any of the items under public.
+
+The next line which just restates Course with the parens (ln 24)
+is the 'default constructor'.  This code gets called everytime
+you create a new Course object. No data is passed to it, so
+it just creates a Course using default settings.  Line 25
+defines another type of constructor where we can tell it
+specifically how we want to define our Course.  No code yet,
+we will get to that soon.
+
+Ln 26 has the desconstructor.  This is called whenever we delete
+a Course object.  It is important to realize that we can create
+or destroy Course objects as our program runs.  We will see
+this shortly.
+
+Next (Ln 30) we see the private keyword.  Everything below
+private contains things that Course may use, but someone creating
+a Course object is not allowed to touch.  Sometimes, we need
+to access one of these but still want to ensure the user can't
+change them inadvertantly.  For this we use accessors aka
+getters and setters.  We will work on these together.
+
+Line 31 contains the name of this instance of course.
+Line 32 contans a short description of the course.
+and Line 33 contains a unique identifier for the school to
+track the course.
+
+Ok.  all good.  Now lets open up the implementation of Course.
+Click anywhere on your Course.h file t0 highlight it.  then
+go select Course.cpp from the left.
+
+First thing we see is our header block which describes stuff
+about this file.  On Line 14 we see a line which tells the compiler
+to include information contained in the file Course.h.  This is
+important because this is where our Class definition is.
+
+In here we need to provide the implementation for all functions
+we defined in our definition (.h file).  First is our default
+constructor.  All functions that belong to Course need
+'Course::'  prior to their name.  This tells the compiler that
+the function belongs to Course.  So Course::Course() means
+this is the default constructor for Course that belongs to
+Course.  Redundant, yes.  Each time you create Course, the
+constructor gets called automatically.
+
+Note the colon after Course().  This is a shortcut that is
+used to initialize any of Courses member attributes.  We see 
+name and id and we just initialize them to something.  In this 
+case "unknown" and 0.  It should be noted that we didn't
+init mCourseDescription to anything.  If we use it before
+we init it, the contents will be unknown, so could be anything.
+Most likely it will just be random characters.
+
+Next is the constructor with stuff being passed in.  Now we
+can decide what we want to init the name, desc, and id to.
+
+Lastly, the desconstructor.  We have nothing to cleanup, so
+we leave it blank.  No big.  If we had allocated any memory
+using the 'new' keyword, then this would be the place we would
+check and free up the memory and delete that object.
+
+Click on the right side anywhere within the editor for
+Course.cpp to give it focus then go to the left pane and
+pick EnglishStudent.h.
+
+One of the powerful things about C++ is called inheritance.
+This means we can create a new class that 'inherits' all the
+functions and attributes from another class.  You've heard
+of not reinventing the wheel.  This is a good example of that.
+
+If we look at line 29 where we declare our class, we see
+the colon and  public Student.  This means we are going to
+derive from the Student Class.  This means everything that is
+part of the Student class will now be part of the EnglishStudent
+class.  In addition, we can add whatever functions or attributes
+we want to add to the EnglishStudent version of student.  We can
+also redefine some of the things with Student if we want.  One
+example of that is the SayHello function.  We can use the base
+class version or we can define our own, just like the example.
+
+Take a look at some of the other classes and see how they
+operate.  You should see the same patterns used there.

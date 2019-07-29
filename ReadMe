@@ -1,0 +1,30 @@
+These are some simple examples to help understand C++.
+The concepts are shown in very basic form.
+Comments are provided to explain the concepts.
+Please change the code to see how it works and what happens.  You can't damage anything.
+
+ex1: Hello World!
+ ex1a. datatypes.
+ ex1b. arrays.
+
+ex2: Runtime arguments.
+
+ex3: Pointers.
+
+ex4: input and output.
+
+ex5: A more complex example.  -- Now we are doing OOP (Object Oriented Programming).
+
+ex6: lists - the easy way (using stl containers)
+  Modify the BlackJack app 
+  
+  Design it first.  What do we need?
+  + card object (what does it have?  a value (0-13), a suit(H,C,S,D), a label (A,2,3,...J,Q,K)
+  + deck object (container of cards - 52 unique) What can it do?  shuffle(), card =dealOne() gather()
+  + dealer object.  A dealer has a deck.  Who does the evaulation of who wins? (dealer).  Dealer also 
+
+ex7:  Robot Code !
+
+
+
+

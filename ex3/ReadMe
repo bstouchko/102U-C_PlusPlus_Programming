@@ -1,0 +1,42 @@
+Fun with pointers!
+
+A more complex subject.  One of the big benefits of c++.
+You will see this used ALOT in C and C++.
+
+Pointers are typically taught much later in a students journey into
+c or c++.  We are trying to compress a lot of learning into a short
+time.  If it doesn't make sense to you thats ok.  Google what they are
+and how they are used.
+
+As mentioned, pointers are very powerful, but at the same time extremely
+dangerous.  If you are not careful, you can crash your program in a
+spectacular way.  Their misuse can also lead to serious performance issues
+such as memory leaks and zombie threads or processes.
+
+Pointers are one of the main differences between Java and C++.
+
+A pointer is simply another datatype that contains a memory location in the
+computer.  The memory location can contain any data type.  The way computers work
+is that all your variables (among other things) are stored in memory locations.
+These locatons are for the most part hidden from you for the sake of making the
+code easy to read.  However, there are cases where you need to perform actions
+that require knowledge of the memory location of a variable.  Pointers help with
+managing that data without the ugliness of seeing the actual memory location.
+
+It is also important to see what the value is of the data that is being pointed to.
+To do this we 'dereference' the pointer.  If you stick an asteriks before the pointer
+it will dereference it and you will get the value of the datatype it is pointing to.
+
+Some things to try:
+
+1. Run the examples.  See what happens.
+
+2. Uncomment the line which tries to print out the contents of a null pointer.  This is
+invalid and will crash your program.  Never use a null pointer in real life, but for here
+check it out and see what happens.
+
+3. Let's point to a different data type.  We've already done an int, and an array.  Write
+the code that creates a float pointer, prints what it is equal to (the memory location), and then
+prints the contents of that location.
+
+4. Do the same thing for a std::string.

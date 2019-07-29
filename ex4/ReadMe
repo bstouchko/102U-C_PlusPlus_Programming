@@ -1,0 +1,32 @@
+ex4  ==  Input and Output.
+
+A simple project that shows how we can get input and output.
+
+Getting data from the user (or any other part of the system, i.e. robot)
+is a very important part of computing.  Most of this information is processed
+and sent back to the user or another part of the system.  There are many
+many ways to get and send data on a system.  Most of the time this depends on
+the system and what means it has in order to transfer data.  The most common
+that we see with computers is keyboard input and screen output.  However, we can
+also get and send data from the usb port on a computer.  On embedded systems such
+as the robot, we have a number of other means to get and send that are important.
+Some of these include: usb; ethernet; uart; spi; i2c; and can bus.  The method
+is determined by the distance the data needs to go as well as speed and size.  For
+instance, can bus is widely used on our robot to transfer data to and from the
+motor controllers, solenoids for pneumatics, and other controls.  We use usb or ethernet
+for direct connection to our computer so we can upload new code.  We can also use these
+for communications to other sensors and light strips.
+
+Things to try:
+1. Build the exe and run it from the command line the same was as in ex2.  From the command
+prompt just type ex4
+
+2. Change the message above and put the program in a loop until the user presses q to quit.
+
+3. Same as above, but allow the user to select either q or Q.
+
+4. Same as above, but let the user first select the maximum number.  Be careful, this
+sounds easier than it is.  You need to make sure all areas of the program that use the maximum
+number must accomodate your maximum value that is entered by the user.  This is called 'dynamic'
+response, or constraints of the program are figured out as the user uses the program and not when
+we compile it.
